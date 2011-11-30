@@ -1,0 +1,19 @@
+2011-11-10  Yohei Endo  <yoheie@gmail.com>
+
+	* version 2.1.0
+	* retcoder.c: support --estr option.
+
+2011-08-30  Yohei Endo  <yoheie@gmail.com>
+
+	* version 2.0.2
+	* retcoder.c: Allow multiple short options after one hyphen.
+
+2011-08-12  Yohei Endo  <yoheie@gmail.com>
+
+	* version 2.0.1
+	* retcoder.c: Replace WIN32 with _WIN32, setmode with _setmode, fileno
+	with _fileno, O_BINARY with _O_BINARY.
+
+2011-08-08  Yohei Endo  <yoheie@gmail.com>
+
+	* version 2.0.0
