@@ -1,3 +1,7 @@
+2011-11-30  Yohei Endo  <yoheie@gmail.com>
+
+	* retcoder.c: Fix initial value of retcoder_params
+
 2011-11-10  Yohei Endo  <yoheie@gmail.com>
 
 	* version 2.1.0

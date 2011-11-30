@@ -48,7 +48,8 @@ static struct {
 	0,
 	0,
 	0,
-	NULL
+	NULL,
+	0
 };
 
 static FILE *p_retcoder_input_file;
