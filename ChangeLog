@@ -1,3 +1,7 @@
+2011-12-02  Yohei Endo  <yoheie@gmail.com>
+
+	* retcoder.c: Refactoring (add function retcoder_main())
+
 2011-11-30  Yohei Endo  <yoheie@gmail.com>
 
 	* retcoder.c: Fix initial value of retcoder_params

@@ -31,6 +31,7 @@
 static int retcoder_check_options(int argc, char *argv[]);
 static void retcoder_print_version(FILE *pf);
 static void retcoder_print_usage(FILE *pf);
+static void retcoder_main(const char *filename);
 static int retcoder_getc(void);
 static int retcoder_putc(int c);
 static int retcoder_put_crlf(crlf_type_t type);
@@ -94,18 +95,7 @@ int main(int argc, char *argv[])
 				fprintf(stderr, "error: file %s not found!!\n", argv[n]);
 			}
 			else {
-				retcoder_input_type_flags = 0;
-				crlf_convert(
-						retcoder_getc,
-						retcoder_params.check_only ? NULL : retcoder_putc,
-						retcoder_put_crlf
-						);
-				if (retcoder_params.check_only) {
-					retcoder_print_input_type(stdout, argv[n]);
-				}
-				else if (retcoder_params.show_input_type) {
-					retcoder_print_input_type(stderr, argv[n]);
-				}
+				retcoder_main(argv[n]);
 			}
 		}
 	}
@@ -115,18 +105,7 @@ int main(int argc, char *argv[])
 		_setmode(_fileno(stdin), _O_BINARY);
 #endif
 		p_retcoder_input_file = stdin;
-		retcoder_input_type_flags = 0;
-		crlf_convert(
-				retcoder_getc,
-				retcoder_params.check_only ? NULL : retcoder_putc,
-				retcoder_put_crlf
-				);
-		if (retcoder_params.check_only) {
-			retcoder_print_input_type(stdout, "stdin");
-		}
-		else if (retcoder_params.show_input_type) {
-			retcoder_print_input_type(stderr, "stdin");
-		}
+		retcoder_main("stdin");
 	}
 
 	return 0;
@@ -331,6 +310,22 @@ static void retcoder_print_version(FILE *pf)
 static void retcoder_print_usage(FILE *pf)
 {
 	fprintf(pf, retcoder_usage_string);
+}
+
+static void retcoder_main(const char *filename)
+{
+	retcoder_input_type_flags = 0;
+	crlf_convert(
+			retcoder_getc,
+			retcoder_params.check_only ? NULL : retcoder_putc,
+			retcoder_put_crlf
+			);
+	if (retcoder_params.check_only) {
+		retcoder_print_input_type(stdout, filename);
+	}
+	else if (retcoder_params.show_input_type) {
+		retcoder_print_input_type(stderr, filename);
+	}
 }
 
 static int retcoder_getc(void)
