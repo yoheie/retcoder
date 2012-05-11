@@ -1,3 +1,7 @@
+2012-05-11  Yohei Endo  <yoheie@gmail.com>
+
+	* Makefile: Add strip option (-s) to LDFLAGS
+
 2011-12-02  Yohei Endo  <yoheie@gmail.com>
 
 	* retcoder.c: Refactoring (add function retcoder_main())
