@@ -38,7 +38,7 @@ void crlf_convert(
 	if (pf_getc != NULL) {
 		do {
 			c = (*pf_getc)();
-			if (c == '\n') {
+			if (c == (unsigned char)'\n') {
 				if (prev_cr) {
 					prev_cr = 0;
 					/* CRLF */
@@ -67,7 +67,7 @@ void crlf_convert(
 						}
 					}
 				}
-				if (c == '\r') {
+				if (c == (unsigned char)'\r') {
 					prev_cr = 1;
 				}
 				else if (c != EOF) {
