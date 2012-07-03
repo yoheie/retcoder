@@ -1,3 +1,8 @@
+2012-06-28  Yohei Endo  <yoheie@gmail.com>
+
+	* libcrlf.c: Convert type of character constants to unsigned char when
+	compareing with return value of pf_getc().
+
 2012-05-11  Yohei Endo  <yoheie@gmail.com>
 
 	* Makefile: Add strip option (-s) to LDFLAGS
