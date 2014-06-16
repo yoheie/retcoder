@@ -1,3 +1,7 @@
+2014-06-16  Yohei Endo  <yoheie@gmail.com>
+
+	Autoconfiscate.
+
 2012-06-28  Yohei Endo  <yoheie@gmail.com>
 
 	* libcrlf.c: Convert type of character constants to unsigned char when
