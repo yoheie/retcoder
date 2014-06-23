@@ -1,6 +1,7 @@
 2014-06-23  Yohei Endo  <yoheie@gmail.com>
 
 	* src/retcoder.c: Add fclose().
+	* src/retcoder.c: Use stdin if "-" is passed as filename.
 
 2014-06-16  Yohei Endo  <yoheie@gmail.com>
 
