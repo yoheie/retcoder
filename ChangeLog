@@ -1,3 +1,7 @@
+2014-06-23  Yohei Endo  <yoheie@gmail.com>
+
+	* src/retcoder.c: Add fclose().
+
 2014-06-16  Yohei Endo  <yoheie@gmail.com>
 
 	* version 2.1.1
