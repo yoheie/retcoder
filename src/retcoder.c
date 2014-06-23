@@ -86,28 +86,33 @@ int main(int argc, char *argv[])
 	}
 
 #ifdef _WIN32
+	_setmode(_fileno(stdin), _O_BINARY);
 	if (!retcoder_params.check_only) {
 		_setmode(_fileno(stdout), _O_BINARY);
 	}
 #endif
 	if (n < argc) {
-		/* Read from file */
 		for ( ; n < argc; n++) {
-			p_retcoder_input_file = fopen(argv[n], "rb");
-			if (p_retcoder_input_file == NULL) {
-				fprintf(stderr, "error: file %s not found!!\n", argv[n]);
+			if (strcmp(argv[n], "-") == 0) {
+				/* Read from stdin */
+				p_retcoder_input_file = stdin;
+				retcoder_main("stdin");
 			}
 			else {
-				retcoder_main(argv[n]);
-				fclose(p_retcoder_input_file);
+				/* Read from file */
+				p_retcoder_input_file = fopen(argv[n], "rb");
+				if (p_retcoder_input_file == NULL) {
+					fprintf(stderr, "error: file %s not found!!\n", argv[n]);
+				}
+				else {
+					retcoder_main(argv[n]);
+					fclose(p_retcoder_input_file);
+				}
 			}
 		}
 	}
 	else {
 		/* Read from stdin */
-#ifdef _WIN32
-		_setmode(_fileno(stdin), _O_BINARY);
-#endif
 		p_retcoder_input_file = stdin;
 		retcoder_main("stdin");
 	}
@@ -121,7 +126,7 @@ static int retcoder_check_options(int argc, char *argv[])
 	int m;
 
 	for (n = 1; n < argc; n++) {
-		if (argv[n][0] == '-') {
+		if ((argv[n][0] == '-') && (argv[n][1] != '\0')) {
 			if (argv[n][1] == '-') {
 				/* Long options */
 				if (argv[n][2] == '\0') {
@@ -218,7 +223,7 @@ static int retcoder_check_options(int argc, char *argv[])
 					return -1;
 				}
 			}
-			else if (argv[n][1] != '\0') {
+			else {
 				/* Short options */
 				m = 1;
 				while (argv[n][m] != '\0') {
@@ -261,9 +266,6 @@ static int retcoder_check_options(int argc, char *argv[])
 					}
 					m++;
 				}
-			}
-			else {
-				return -1;
 			}
 		}
 		else {
