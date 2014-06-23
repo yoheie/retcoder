@@ -99,6 +99,7 @@ int main(int argc, char *argv[])
 			}
 			else {
 				retcoder_main(argv[n]);
+				fclose(p_retcoder_input_file);
 			}
 		}
 	}
