@@ -20,5 +20,6 @@ AC_CHECK_HEADERS([fcntl.h string.h wchar.h])
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+                 src/Makefile
+                 retcoder.spec])
 AC_OUTPUT

@@ -1,2 +1,2 @@
 SUBDIRS = src
-EXTRA_DIST = License
+EXTRA_DIST = License retcoder.spec

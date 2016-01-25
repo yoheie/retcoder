@@ -1,0 +1,46 @@
+Name: @PACKAGE@
+Version: @VERSION@
+Release: 1
+Source: https://yoheie.sakura.ne.jp/retcoder/%{name}-%{version}.tar.gz
+
+Summary: EOL code conversion filter
+Summary:(ja): 改行コード変換フィルタ
+License: zlib
+Group: Applications/Text
+Url: https://yoheie.sakura.ne.jp/retcoder/
+# Url: https://github.com/yoheie/retcoder
+Packager: Yohei Endo <yoheie@gmail.com>
+
+Buildroot: %{_tmppath}/%{name}-%{version}-root
+Prefix: %{_prefix}
+
+%description
+Convert EOL code.
+( See 'retcoder --help' for more info. )
+
+%description -l ja
+改行コードの変換をします。
+( 詳しい使用法は 'retcoder --help' をご参照ください。 )
+
+%prep
+%setup -q
+
+%build
+./configure --prefix=%{_prefix}
+make
+
+%install
+rm -rf ${RPM_BUILD_ROOT}
+make prefix=${RPM_BUILD_ROOT}/%{_prefix} install
+
+%clean
+rm -rf ${RPM_BUILD_ROOT}
+
+%files
+%defattr(-,root,root)
+%doc License ChangeLog
+%{_prefix}/bin/retcoder
+
+%changelog
+* Mon Jan 25 2016 Yohei Endo <yoheie@gmail.com>
+- Autotoolized initial release
