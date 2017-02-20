@@ -26,21 +26,25 @@ Convert EOL code.
 %setup -q
 
 %build
-./configure --prefix=%{_prefix}
+./configure --prefix=%{_prefix} --docdir=%{_docdir}/%{name}-%{version}
 make
 
 %install
 rm -rf ${RPM_BUILD_ROOT}
-make prefix=${RPM_BUILD_ROOT}/%{_prefix} install
+make DESTDIR=${RPM_BUILD_ROOT} install
 
 %clean
 rm -rf ${RPM_BUILD_ROOT}
 
 %files
 %defattr(-,root,root)
-%doc License ChangeLog
 %{_prefix}/bin/retcoder
+%{_docdir}/%{name}-%{version}/*
 
 %changelog
+* Mon Feb 20 2017 Yohei Endo <yoheie@gmail.com>
+- Install documents to %%{_docdir}/%%{name}-%%{version}
+- Use DESTDIR on make install
+
 * Mon Jan 25 2016 Yohei Endo <yoheie@gmail.com>
 - Autotoolized initial release
