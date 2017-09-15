@@ -1,6 +1,6 @@
 Name: @PACKAGE@
 Version: @VERSION@
-Release: 1
+Release: 1%{?dist}
 Source: https://yoheie.sakura.ne.jp/retcoder/%{name}-%{version}.tar.gz
 
 Summary: EOL code conversion filter
@@ -42,6 +42,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_docdir}/%{name}-%{version}/*
 
 %changelog
+* Fri Sep 15 2017 Yohei Endo <yoheie@gmail.com>
+- Add %%{?dist} to Release
+
 * Mon Feb 20 2017 Yohei Endo <yoheie@gmail.com>
 - Install documents to %%{_docdir}/%%{name}-%%{version}
 - Use DESTDIR on make install
