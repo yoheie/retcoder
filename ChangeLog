@@ -1,3 +1,9 @@
+2019-02-22  Yohei Endo  <yoheie@gmail.com>
+
+	* version 2.2.1
+	* ChangeLog and License are installed as documents.
+	* Add RPM spec file.
+
 2014-07-15  Yohei Endo  <yoheie@gmail.com>
 
 	* version 2.2.0
