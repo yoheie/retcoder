@@ -1,13 +1,13 @@
 Name: @PACKAGE@
 Version: @VERSION@
 Release: 1%{?dist}
-Source: https://yoheie.sakura.ne.jp/retcoder/%{name}-%{version}.tar.gz
+Source: https://yoheie.github.io/retcoder/%{name}-%{version}.tar.gz
 
 Summary: EOL code conversion filter
 Summary:(ja): 改行コード変換フィルタ
 License: zlib
 Group: Applications/Text
-Url: https://yoheie.sakura.ne.jp/retcoder/
+Url: https://yoheie.github.io/retcoder/
 # Url: https://github.com/yoheie/retcoder
 Packager: Yohei Endo <yoheie@gmail.com>
 
@@ -42,6 +42,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_docdir}/%{name}-%{version}/*
 
 %changelog
+* Fri Jan 21 2022 Yohei Endo <yoheie@gmail.com>
+- change URL to yoheie.github.io
+
 * Fri Sep 15 2017 Yohei Endo <yoheie@gmail.com>
 - Add %%{?dist} to Release
 
